@@ -91,7 +91,7 @@ exports.update = function(req,res){
 				res.render('quizes/edit', {quiz: req.quiz, errors: err.errors});
 			} else {
 				req.quiz.save( // save: guarda campos pregunta y respuesta en BD
-					fields: ["pregunta","respuesta"]})
+					{fields: ["pregunta","respuesta"]})
 					.then(function(){res.redirect('/quizes');});
 			}
 		}
