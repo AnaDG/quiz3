@@ -10,7 +10,7 @@ exports.create = function(req,res){
 	var comment = models.Comment.build(
 		{
 			texto: req.body.comment.texto,
-			QuizId: req.àrams.quizId
+			QuizId: req.params.quizId
 		});
 		
 	comment.validate().then(
