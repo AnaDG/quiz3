@@ -23,5 +23,5 @@ exports.create = function(req,res){
 				.save().then(function(){res.redirect('/quizes/'+req.params.quizId)})
 			}	//res.redirect: Redirección HTTP a la lista de preguntas.
 		}
-	).cath(function(error){next(error)});	
+	).catch(function(error){next(error)});	
 };
