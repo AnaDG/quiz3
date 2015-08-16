@@ -33,8 +33,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Helpers dinamicos:
 app.use(function(req, res, next){
 
-	var user = session.user;
-	var lastUsed = session.lastUsed;
+	var user = req.session.user;
+	var lastUsed = req.session.lastUsed;
 	var now = Date.now();
 	var inactividad = now - lastUsed;
 
@@ -45,9 +45,9 @@ app.use(function(req, res, next){
 	
 	// Auto logout tras 2 minutos de inactividad
 	if (user && (inactividad < 120000)){
-		session.lastUsed = now;	
+		req.session.lastUsed = now;	
 	} else {
-		delete session.user;
+		delete req.session.user;
 	}
 	
 	//Hacer visible req.session en las vistas
